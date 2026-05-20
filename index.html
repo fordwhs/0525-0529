@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>高中部特展《苦楝》報名</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background: #f5f0e8;
+      min-height: 100vh;
+      color: #2a2218;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    .ku-root {
+      position: relative;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .ku-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── HERO ── */
+    .ku-hero {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 3.5rem 1.6rem 2.5rem;
+      border-bottom: 1px solid rgba(80,60,30,0.15);
+    }
+
+    .ku-eyebrow {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      color: #7a6545;
+      font-weight: 300;
+      margin-bottom: 1.4rem;
+      line-height: 1.8;
+    }
+
+    .ku-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 72px;
+      font-weight: 600;
+      color: #1e160a;
+      letter-spacing: 0.25em;
+      line-height: 1.05;
+      margin-bottom: 0.5rem;
+    }
+
+    .ku-subtitle {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 14px;
+      color: #5c4a2a;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      margin-bottom: 2rem;
+    }
+
+    .ku-divider {
+      width: 48px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #7a6545, transparent);
+      margin: 0 auto 1.8rem;
+    }
+
+    .ku-tagline {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 15px;
+      color: #4a3820;
+      font-weight: 300;
+      line-height: 2.4;
+      letter-spacing: 0.06em;
+      margin-bottom: 2rem;
+    }
+
+    /* info chips — stacked on mobile */
+    .ku-info-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .ku-info-item {
+      font-size: 14px;
+      color: #6b5538;
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ku-info-item svg {
+      width: 16px;
+      height: 16px;
+      stroke: #8b6e45;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    /* ── FORM ── */
+    .ku-form-wrap {
+      position: relative;
+      z-index: 1;
+      padding: 2.5rem 1.6rem 5rem;
+    }
+
+    .ku-form-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: #3d2e1a;
+      letter-spacing: 0.3em;
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .ku-field { margin-bottom: 2.2rem; }
+
+    .ku-label {
+      display: block;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      color: #6b5538;
+      margin-bottom: 12px;
+      font-weight: 400;
+    }
+
+    .ku-label .req { color: #a0522d; margin-left: 4px; }
+
+    .ku-input {
+      width: 100%;
+      background: rgba(255,250,242,0.95);
+      border: 1px solid rgba(120,90,50,0.28);
+      border-radius: 3px;
+      padding: 15px 16px;
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 16px; /* prevent iOS zoom */
+      color: #2a2218;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .ku-input:focus {
+      border-color: rgba(120,90,50,0.65);
+      background: #fffcf5;
+    }
+
+    .ku-input::placeholder { color: #b09a7a; }
+
+    /* Domain radios — 2 col on mobile */
+    .ku-radio-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .ku-radio-item { position: relative; }
+
+    .ku-radio-item input[type="radio"] {
+      position: absolute; opacity: 0; width: 0; height: 0;
+    }
+
+    .ku-radio-label {
+      display: block;
+      padding: 13px 10px;
+      background: rgba(255,250,242,0.95);
+      border: 1px solid rgba(120,90,50,0.22);
+      border-radius: 3px;
+      font-size: 15px;
+      color: #4a3820;
+      cursor: pointer;
+      transition: all 0.18s;
+      text-align: center;
+      letter-spacing: 0.06em;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .ku-radio-item input:checked + .ku-radio-label {
+      background: rgba(120,90,50,0.14);
+      border-color: rgba(120,90,50,0.58);
+      color: #2a1c0a;
+      font-weight: 400;
+    }
+
+    /* Time slots */
+    .ku-time-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .ku-time-item { position: relative; }
+
+    .ku-time-item input[type="radio"] {
+      position: absolute; opacity: 0; width: 0; height: 0;
+    }
+
+    .ku-time-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 15px 18px;
+      background: rgba(255,250,242,0.95);
+      border: 1px solid rgba(120,90,50,0.22);
+      border-radius: 3px;
+      font-size: 15px;
+      color: #4a3820;
+      cursor: pointer;
+      transition: all 0.18s;
+      letter-spacing: 0.06em;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      min-height: 52px;
+    }
+
+    .ku-time-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(120,90,50,0.4);
+      flex-shrink: 0;
+      transition: all 0.18s;
+    }
+
+    .ku-time-item input:checked + .ku-time-label {
+      background: rgba(120,90,50,0.12);
+      border-color: rgba(120,90,50,0.55);
+      color: #2a1c0a;
+    }
+
+    .ku-time-item input:checked + .ku-time-label .ku-time-dot {
+      background: #7a6545;
+      border-color: #7a6545;
+    }
+
+    /* Submit */
+    .ku-submit-area {
+      margin-top: 2.8rem;
+    }
+
+    .ku-submit {
+      width: 100%;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 16px;
+      letter-spacing: 0.4em;
+      color: #f5f0e8;
+      background: #3d2e1a;
+      border: none;
+      padding: 18px 0;
+      cursor: pointer;
+      border-radius: 3px;
+      transition: background 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .ku-submit:active { background: #2a1c0a; }
+
+    .ku-footer-note {
+      text-align: center;
+      font-size: 12px;
+      color: #9a845a;
+      letter-spacing: 0.1em;
+      margin-top: 2rem;
+      line-height: 2.2;
+    }
+
+    .ku-tree-deco {
+      text-align: center;
+      font-size: 12px;
+      color: rgba(90,70,40,0.3);
+      letter-spacing: 0.4em;
+      margin-top: 1.4rem;
+    }
+
+    /* Alert */
+    .ku-alert {
+      display: none;
+      background: rgba(160,82,45,0.1);
+      border: 1px solid rgba(160,82,45,0.3);
+      border-radius: 3px;
+      padding: 13px 16px;
+      font-size: 14px;
+      color: #7a3e18;
+      margin-bottom: 1.8rem;
+      letter-spacing: 0.05em;
+    }
+    .ku-alert.visible { display: block; }
+
+    /* Success */
+    .ku-success {
+      display: none;
+      text-align: center;
+      padding: 3rem 1.6rem 2rem;
+      font-family: 'Noto Serif TC', serif;
+    }
+    .ku-success.visible { display: block; }
+    .ku-form-content.hidden { display: none; }
+
+    .ku-success-icon {
+      font-size: 44px;
+      margin-bottom: 1.4rem;
+      color: #7a6545;
+    }
+
+    .ku-success-title {
+      font-size: 24px;
+      color: #2a1c0a;
+      letter-spacing: 0.25em;
+      font-weight: 400;
+      margin-bottom: 1.2rem;
+    }
+
+    .ku-success-text {
+      font-size: 16px;
+      color: #5c4a2a;
+      letter-spacing: 0.08em;
+      line-height: 2.4;
+    }
+
+    /* ── PAGE FOOTER ── */
+    .ku-page-footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid rgba(80,60,30,0.15);
+      padding: 2.5rem 1.6rem 3rem;
+      text-align: center;
+    }
+    .ku-page-footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    .ku-dept-label {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 12px;
+      letter-spacing: 0.25em;
+      color: #9a845a;
+      font-weight: 300;
+    }
+    .ku-dept-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .ku-dept-dot {
+      color: rgba(90,70,40,0.3);
+      font-size: 16px;
+    }
+    .ku-dept-item {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+    .ku-dept-subject {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: #7a6545;
+      background: rgba(120,90,50,0.08);
+      border: 1px solid rgba(120,90,50,0.2);
+      padding: 2px 8px;
+      border-radius: 2px;
+    }
+    .ku-dept-name {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 15px;
+      color: #3d2e1a;
+      letter-spacing: 0.12em;
+      font-weight: 400;
+    }
+    .ku-dept-course {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      color: rgba(90,70,40,0.4);
+      font-weight: 300;
+    }
+
+    .ku-notice {
+      text-align: center;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 14px;
+      color: #5c4a2a;
+      letter-spacing: 0.1em;
+      line-height: 2.2;
+      margin: 2.5rem 0 0;
+      padding: 1.4rem 1.6rem;
+      border-top: 1px solid rgba(120,90,50,0.15);
+      border-bottom: 1px solid rgba(120,90,50,0.15);
+    }
+    .ku-notice-icon {
+      display: block;
+      font-size: 12px;
+      color: #9a845a;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.3em;
+    }
+
+        /* Desktop enhancement */
+    @media (min-width: 600px) {
+      .ku-hero { padding: 5rem 3rem 3rem; max-width: 680px; margin: 0 auto; }
+      .ku-title { font-size: 88px; }
+      .ku-tagline { font-size: 15px; }
+      .ku-info-row { flex-direction: row; justify-content: center; gap: 2.5rem; }
+      .ku-form-wrap { max-width: 540px; margin: 0 auto; padding: 3rem 0 5rem; }
+      .ku-submit { width: auto; padding: 16px 64px; display: block; margin: 0 auto; }
+      .ku-radio-group { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+<body>
+<div class="ku-root">
+
+  <svg class="ku-bg" viewBox="0 0 400 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+    <circle cx="200" cy="160" r="240" fill="rgba(180,160,120,0.05)"/>
+    <text x="140" y="820" font-size="220" fill="rgba(100,75,40,0.045)" font-family="serif" font-weight="bold">楝</text>
+    <text x="10" y="240" font-size="100" fill="rgba(100,75,40,0.03)" font-family="serif">苦</text>
+  </svg>
+
+  <header class="ku-hero">
+    <p class="ku-eyebrow">臺南市立大灣高級中學<br>高中部特展</p>
+    <h1 class="ku-title">苦楝</h1>
+    <p class="ku-subtitle">島嶼思辨 多元選修成果展</p>
+    <div class="ku-divider"></div>
+    <p class="ku-tagline">
+      那些國家拿不走的……<br>
+      帶領高中同學實地訪問白色恐怖受難前輩<br>
+      以苦楝為意象，走入歷史的漩渦
+    </p>
+    <div class="ku-info-row">
+      <span class="ku-info-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        高中部二樓
+      </span>
+      <span class="ku-info-item">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        5月25日 — 29日
+      </span>
+      <span class="ku-info-item">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+        13:30 – 14:00
+      </span>
+    </div>
+  </header>
+
+  <main class="ku-form-wrap">
+    <p class="ku-form-title">教師參訪報名</p>
+
+    <div class="ku-form-content" id="formContent">
+
+      <div class="ku-alert" id="alertBox" role="alert"></div>
+
+      <div class="ku-field">
+        <label class="ku-label" for="f-name">教師姓名<span class="req">*</span></label>
+        <input class="ku-input" type="text" id="f-name" placeholder="請輸入姓名" autocomplete="name">
+      </div>
+
+      <div class="ku-field">
+        <span class="ku-label">任教領域<span class="req">*</span></span>
+        <div class="ku-radio-group" role="group" aria-label="任教領域">
+          <div class="ku-radio-item"><input type="radio" name="domain" id="d1" value="國文領域"><label class="ku-radio-label" for="d1">國文領域</label></div>
+          <div class="ku-radio-item"><input type="radio" name="domain" id="d2" value="社會領域"><label class="ku-radio-label" for="d2">社會領域</label></div>
+          <div class="ku-radio-item"><input type="radio" name="domain" id="d3" value="藝文領域"><label class="ku-radio-label" for="d3">藝文領域</label></div>
+          <div class="ku-radio-item"><input type="radio" name="domain" id="d4" value="自然領域"><label class="ku-radio-label" for="d4">自然領域</label></div>
+          <div class="ku-radio-item"><input type="radio" name="domain" id="d5" value="科技、健體領域"><label class="ku-radio-label" for="d5">科技、健體</label></div>
+          <div class="ku-radio-item"><input type="radio" name="domain" id="d6" value="數學領域"><label class="ku-radio-label" for="d6">數學領域</label></div>
+          <div class="ku-radio-item"><input type="radio" name="domain" id="d7" value="綜合領域"><label class="ku-radio-label" for="d7">綜合領域</label></div>
+        </div>
+      </div>
+
+      <div class="ku-field">
+        <span class="ku-label">參訪時間<span class="req">*</span></span>
+        <div class="ku-time-group" role="group" aria-label="參訪時間">
+          <div class="ku-time-item">
+            <input type="radio" name="time" id="t0" value="5/25 1330-1400">
+            <label class="ku-time-label" for="t0"><span class="ku-time-dot"></span>5月25日（日）13:30–14:00</label>
+          </div>
+          <div class="ku-time-item">
+            <input type="radio" name="time" id="t1" value="5/26 1330-1400">
+            <label class="ku-time-label" for="t1"><span class="ku-time-dot"></span>5月26日（一）13:30–14:00</label>
+          </div>
+          <div class="ku-time-item">
+            <input type="radio" name="time" id="t2" value="5/27 1330-1400">
+            <label class="ku-time-label" for="t2"><span class="ku-time-dot"></span>5月27日（二）13:30–14:00</label>
+          </div>
+          <div class="ku-time-item">
+            <input type="radio" name="time" id="t3" value="5/28 1330-1400">
+            <label class="ku-time-label" for="t3"><span class="ku-time-dot"></span>5月28日（三）13:30–14:00</label>
+          </div>
+          <div class="ku-time-item">
+            <input type="radio" name="time" id="t4" value="5/29 1330-1400">
+            <label class="ku-time-label" for="t4"><span class="ku-time-dot"></span>5月29日（四）13:30–14:00</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="ku-notice">
+        <span class="ku-notice-icon">✦</span>
+        報名後將由高中部同學進行專業導覽<br>時間約 10–15 分鐘
+      </div>
+
+      <div class="ku-submit-area">
+        <button class="ku-submit" onclick="handleSubmit()">確認報名</button>
+      </div>
+
+      <div class="ku-footer-note">
+        <p style="margin-bottom:0.6rem;">本活動僅開放國中部教師報名參訪</p>
+        <p style="font-size:11px;color:#9a845a;letter-spacing:0.15em;margin-bottom:0.5rem;">高中部　指導教師</p>
+        <div style="display:flex;justify-content:center;align-items:baseline;gap:0.8rem;flex-wrap:wrap;">
+          <span style="display:inline-flex;align-items:baseline;gap:5px;">
+            <span style="font-size:11px;color:#7a6545;background:rgba(120,90,50,0.08);border:1px solid rgba(120,90,50,0.2);padding:2px 7px;border-radius:2px;letter-spacing:0.1em;">國文</span>
+            <span style="font-size:14px;color:#3d2e1a;letter-spacing:0.1em;">彭瑞萱 老師</span>
+          </span>
+          <span style="color:rgba(90,70,40,0.3);">·</span>
+          <span style="display:inline-flex;align-items:baseline;gap:5px;">
+            <span style="font-size:11px;color:#7a6545;background:rgba(120,90,50,0.08);border:1px solid rgba(120,90,50,0.2);padding:2px 7px;border-radius:2px;letter-spacing:0.1em;">公民</span>
+            <span style="font-size:14px;color:#3d2e1a;letter-spacing:0.1em;">李惠茹 老師</span>
+          </span>
+        </div>
+      </div>
+      <p class="ku-tree-deco">— 苦 楝 —</p>
+    </div>
+
+    <div class="ku-success" id="successMsg" aria-live="polite">
+      <div class="ku-success-icon">✦</div>
+      <h2 class="ku-success-title">報名完成</h2>
+      <p class="ku-success-text" id="successDetail"></p>
+      <p class="ku-tree-deco" style="margin-top:2.5rem;">— 感謝您撥空參訪 —</p>
+    </div>
+  </main>
+
+</div>
+
+<script>
+  const dayLabel = {
+    '5/25 1330-1400': '5月25日（日）',
+    '5/26 1330-1400': '5月26日（一）',
+    '5/27 1330-1400': '5月27日（二）',
+    '5/28 1330-1400': '5月28日（三）',
+    '5/29 1330-1400': '5月29日（四）'
+  };
+  function showAlert(msg) {
+    const box = document.getElementById('alertBox');
+    box.textContent = msg;
+    box.classList.add('visible');
+    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  function hideAlert() { document.getElementById('alertBox').classList.remove('visible'); }
+  function handleSubmit() {
+    hideAlert();
+    const name = document.getElementById('f-name').value.trim();
+    const domain = document.querySelector('input[name="domain"]:checked');
+    const time = document.querySelector('input[name="time"]:checked');
+    if (!name) { showAlert('請填寫教師姓名'); return; }
+    if (!domain) { showAlert('請選擇任教領域'); return; }
+    if (!time) { showAlert('請選擇參訪時間'); return; }
+    document.getElementById('formContent').classList.add('hidden');
+    const success = document.getElementById('successMsg');
+    success.classList.add('visible');
+    document.getElementById('successDetail').innerHTML =
+      name + ' 老師<br>' + domain.value + '・' + dayLabel[time.value] + ' 13:30–14:00<br><br>期待您蒞臨高中部二樓，<br>一同感受同學們最動人的思辨結晶。';
+    success.scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
