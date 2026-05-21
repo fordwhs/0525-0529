@@ -544,37 +544,27 @@
     if (!domain) { showAlert('請選擇任教領域'); return; }
     if (!time)   { showAlert('請選擇參訪時間'); return; }
 
-    // Submit to Google Form via hidden iframe (no-CORS workaround)
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = FORM_ACTION;
-    form.target = 'hidden_iframe';
-
     const fbzx = Math.floor(Math.random() * 9e18).toString();
-    const fields = {
-      [ENTRY_NAME]:              name,
-      [ENTRY_DOMAIN]:            domain.value,
-      [ENTRY_TIME]:              time.value,
-      [ENTRY_DOMAIN + '_sentinel']: '__Submitted__',
-      [ENTRY_TIME   + '_sentinel']: '__Submitted__',
-      'fvv':                     '1',
-      'pageHistory':             '0',
-      'fbzx':                    fbzx,
-    };
 
-    for (const [key, val] of Object.entries(fields)) {
-      const input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = key;
-      input.value = val;
-      form.appendChild(input);
-    }
+    const body = new URLSearchParams({
+      [ENTRY_NAME]:   name,
+      [ENTRY_DOMAIN]: domain.value,
+      [ENTRY_TIME]:   time.value,
+      [ENTRY_DOMAIN + '_sentinel']: '',
+      [ENTRY_TIME   + '_sentinel']: '',
+      'fvv':          '1',
+      'pageHistory':  '0',
+      'fbzx':         fbzx,
+    });
 
-    document.body.appendChild(form);
-    form.submit();
-    document.body.removeChild(form);
+    fetch(FORM_ACTION, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body.toString()
+    });
 
-    // Show success UI
+    // Show success UI immediately (no-cors means we can't read response)
     document.getElementById('formContent').classList.add('hidden');
     const success = document.getElementById('successMsg');
     success.classList.add('visible');
