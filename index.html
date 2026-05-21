@@ -545,16 +545,18 @@
     if (!time)   { showAlert('請選擇參訪時間'); return; }
 
     const fbzx = Math.floor(Math.random() * 9e18).toString();
+    const dlut = Date.now().toString();
 
     const body = new URLSearchParams({
-      [ENTRY_NAME]:   name,
-      [ENTRY_DOMAIN]: domain.value,
-      [ENTRY_TIME]:   time.value,
-      [ENTRY_DOMAIN + '_sentinel']: '',
-      [ENTRY_TIME   + '_sentinel']: '',
-      'fvv':          '1',
-      'pageHistory':  '0',
-      'fbzx':         fbzx,
+      [ENTRY_NAME]:                  name,
+      [ENTRY_DOMAIN]:                domain.value,
+      [ENTRY_TIME]:                  time.value,
+      'dlut':                        dlut,
+      [ENTRY_DOMAIN + '_sentinel']:  '',
+      [ENTRY_TIME   + '_sentinel']:  '',
+      'fvv':                         '1',
+      'pageHistory':                 '0',
+      'fbzx':                        fbzx,
     });
 
     fetch(FORM_ACTION, {
