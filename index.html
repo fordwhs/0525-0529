@@ -128,11 +128,11 @@
       <div class="ku-field">
         <span class="ku-label">參訪時間<span class="req">*</span></span>
         <div class="ku-time-group" role="group">
-          <div class="ku-time-item"><input type="radio" name="time" id="t0" value="5/25 1330-1400"><label class="ku-time-label" for="t0"><span class="ku-time-dot"></span>5月25日（日）13:30–14:00</label></div>
-          <div class="ku-time-item"><input type="radio" name="time" id="t1" value="5/26 1330-1400"><label class="ku-time-label" for="t1"><span class="ku-time-dot"></span>5月26日（一）13:30–14:00</label></div>
-          <div class="ku-time-item"><input type="radio" name="time" id="t2" value="5/27 1330-1400"><label class="ku-time-label" for="t2"><span class="ku-time-dot"></span>5月27日（二）13:30–14:00</label></div>
-          <div class="ku-time-item"><input type="radio" name="time" id="t3" value="5/28 1330-1400"><label class="ku-time-label" for="t3"><span class="ku-time-dot"></span>5月28日（三）13:30–14:00</label></div>
-          <div class="ku-time-item"><input type="radio" name="time" id="t4" value="5/29 1330-1400"><label class="ku-time-label" for="t4"><span class="ku-time-dot"></span>5月29日（四）13:30–14:00</label></div>
+          <div class="ku-time-item"><input type="radio" name="time" id="t0" value="5/25 1330-1400"><label class="ku-time-label" for="t0"><span class="ku-time-dot"></span>5月25日（一）13:30–14:00</label></div>
+          <div class="ku-time-item"><input type="radio" name="time" id="t1" value="5/26 1330-1400"><label class="ku-time-label" for="t1"><span class="ku-time-dot"></span>5月26日（二）13:30–14:00</label></div>
+          <div class="ku-time-item"><input type="radio" name="time" id="t2" value="5/27 1330-1400"><label class="ku-time-label" for="t2"><span class="ku-time-dot"></span>5月27日（三）13:30–14:00</label></div>
+          <div class="ku-time-item"><input type="radio" name="time" id="t3" value="5/28 1330-1400"><label class="ku-time-label" for="t3"><span class="ku-time-dot"></span>5月28日（四）13:30–14:00</label></div>
+          <div class="ku-time-item"><input type="radio" name="time" id="t4" value="5/29 1330-1400"><label class="ku-time-label" for="t4"><span class="ku-time-dot"></span>5月29日（五）13:30–14:00</label></div>
         </div>
       </div>
 
@@ -192,11 +192,11 @@
 
 <script>
   const dayLabel = {
-    '5/25 1330-1400': '5月25日（日）',
-    '5/26 1330-1400': '5月26日（一）',
-    '5/27 1330-1400': '5月27日（二）',
-    '5/28 1330-1400': '5月28日（三）',
-    '5/29 1330-1400': '5月29日（四）'
+    '5/25 1330-1400': '5月25日（一）',
+    '5/26 1330-1400': '5月26日（二）',
+    '5/27 1330-1400': '5月27日（三）',
+    '5/28 1330-1400': '5月28日（四')',
+    '5/29 1330-1400': '5月29日（五）'
   };
 
   function showAlert(msg) {
@@ -220,17 +220,27 @@
     if (!domain) { showAlert('請選擇任教領域'); return; }
     if (!time)   { showAlert('請選擇參訪時間'); return; }
 
-    // 送到 Apps Script
+    // 【同步串接 1】將填寫資料塞入原生的 Google Form 表單並傳送
+    document.getElementById('g-name').value = name;
+    document.getElementById('g-domain').value = domain.value;
+    document.getElementById('g-time').value = time.value;
+    document.getElementById('gform').submit();
+
+    // 【同步串接 2】以相容 no-cors 模式的 URLSearchParams 格式發送給 Apps Script
+    const params = new URLSearchParams();
+    params.append('name', name);
+    params.append('domain', domain.value);
+    params.append('time', time.value);
+
     fetch('https://script.google.com/macros/s/AKfycbyTnuMuYVmNzfWeH-ZFkjQ4ttAYTIw--TtqdCiFaJ8lYZ9WHQN17B_C8kJ3taLPaXj8/exec', {
       method: 'POST',
       mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: name, domain: domain.value, time: time.value })
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params.toString()
     }).then(function() {
-      console.log('fetch 送出成功');
+      console.log('Apps Script 傳送完成');
     }).catch(function(err) {
-      console.error('fetch 錯誤:', err);
-      alert('送出失敗: ' + err);
+      console.error('Apps Script 發生錯誤:', err);
     });
 
     // 顯示完成畫面
