@@ -220,13 +220,13 @@
     if (!domain) { showAlert('請選擇任教領域'); return; }
     if (!time)   { showAlert('請選擇參訪時間'); return; }
 
-    // 填入隱藏表單並送出
-    document.getElementById('g-name').value   = name;
-    document.getElementById('g-domain').value = domain.value;
-    document.getElementById('g-time').value   = time.value;
-    document.getElementById('g-dlut').value   = Date.now().toString();
-    document.getElementById('g-fbzx').value   = Math.floor(Math.random() * 9e18).toString();
-    document.getElementById('gform').submit();
+    // 送到 Apps Script
+    fetch('https://script.google.com/macros/s/AKfycbwe-W1FNl-y2C_LsGKWsjnJvCqEnePBPVXc8nP_2sd1mtfxXA5AWNTw0WKfWH1uzRTl/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, domain: domain.value, time: time.value })
+    });
 
     // 顯示完成畫面
     document.getElementById('formContent').classList.add('hidden');
