@@ -31,7 +31,6 @@
       z-index: 0;
     }
 
-    /* ── HERO ── */
     .ku-hero {
       position: relative;
       z-index: 1;
@@ -86,7 +85,6 @@
       margin-bottom: 2rem;
     }
 
-    /* info chips — stacked on mobile */
     .ku-info-row {
       display: flex;
       flex-direction: column;
@@ -104,17 +102,13 @@
     }
 
     .ku-info-item svg {
-      width: 16px;
-      height: 16px;
-      stroke: #8b6e45;
-      fill: none;
-      stroke-width: 1.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+      width: 16px; height: 16px;
+      stroke: #8b6e45; fill: none;
+      stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
       flex-shrink: 0;
     }
 
-    /* ── FORM ── */
+    /* FORM */
     .ku-form-wrap {
       position: relative;
       z-index: 1;
@@ -127,6 +121,16 @@
       font-weight: 400;
       color: #3d2e1a;
       letter-spacing: 0.3em;
+      text-align: center;
+      margin-bottom: 0.8rem;
+    }
+
+    .ku-notice {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 13px;
+      color: #6b5538;
+      letter-spacing: 0.1em;
+      line-height: 2;
       text-align: center;
       margin-bottom: 2.5rem;
     }
@@ -151,7 +155,7 @@
       border-radius: 3px;
       padding: 15px 16px;
       font-family: 'Noto Sans TC', sans-serif;
-      font-size: 16px; /* prevent iOS zoom */
+      font-size: 16px;
       color: #2a2218;
       outline: none;
       transition: border-color 0.2s;
@@ -165,7 +169,6 @@
 
     .ku-input::placeholder { color: #b09a7a; }
 
-    /* Domain radios — 2 col on mobile */
     .ku-radio-group {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -198,15 +201,9 @@
       background: rgba(120,90,50,0.14);
       border-color: rgba(120,90,50,0.58);
       color: #2a1c0a;
-      font-weight: 400;
     }
 
-    /* Time slots */
-    .ku-time-group {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .ku-time-group { display: flex; flex-direction: column; gap: 10px; }
 
     .ku-time-item { position: relative; }
 
@@ -233,8 +230,7 @@
     }
 
     .ku-time-dot {
-      width: 10px;
-      height: 10px;
+      width: 10px; height: 10px;
       border-radius: 50%;
       border: 1.5px solid rgba(120,90,50,0.4);
       flex-shrink: 0;
@@ -252,10 +248,28 @@
       border-color: #7a6545;
     }
 
-    /* Submit */
-    .ku-submit-area {
-      margin-top: 2.8rem;
+    .ku-notice-box {
+      text-align: center;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 14px;
+      color: #5c4a2a;
+      letter-spacing: 0.1em;
+      line-height: 2.2;
+      margin: 2.5rem 0 0;
+      padding: 1.4rem 1.6rem;
+      border-top: 1px solid rgba(120,90,50,0.15);
+      border-bottom: 1px solid rgba(120,90,50,0.15);
     }
+
+    .ku-notice-box span {
+      display: block;
+      font-size: 12px;
+      color: #9a845a;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.3em;
+    }
+
+    .ku-submit-area { margin-top: 2.8rem; }
 
     .ku-submit {
       width: 100%;
@@ -291,7 +305,6 @@
       margin-top: 1.4rem;
     }
 
-    /* Alert */
     .ku-alert {
       display: none;
       background: rgba(160,82,45,0.1);
@@ -315,112 +328,56 @@
     .ku-success.visible { display: block; }
     .ku-form-content.hidden { display: none; }
 
-    .ku-success-icon {
-      font-size: 44px;
-      margin-bottom: 1.4rem;
-      color: #7a6545;
-    }
+    .ku-success-icon { font-size: 44px; margin-bottom: 1.4rem; color: #7a6545; }
+    .ku-success-title { font-size: 24px; color: #2a1c0a; letter-spacing: 0.25em; font-weight: 400; margin-bottom: 1.2rem; }
+    .ku-success-text { font-size: 16px; color: #5c4a2a; letter-spacing: 0.08em; line-height: 2.4; }
 
-    .ku-success-title {
-      font-size: 24px;
-      color: #2a1c0a;
-      letter-spacing: 0.25em;
-      font-weight: 400;
-      margin-bottom: 1.2rem;
-    }
-
-    .ku-success-text {
-      font-size: 16px;
-      color: #5c4a2a;
-      letter-spacing: 0.08em;
-      line-height: 2.4;
-    }
-
-    /* ── PAGE FOOTER ── */
-    .ku-page-footer {
+    /* Footer */
+    .ku-footer {
       position: relative;
       z-index: 1;
       border-top: 1px solid rgba(80,60,30,0.15);
-      padding: 2.5rem 1.6rem 3rem;
+      padding: 2rem 1.6rem 3rem;
       text-align: center;
-    }
-    .ku-page-footer-inner {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.9rem;
+      gap: 0.8rem;
     }
-    .ku-dept-label {
-      font-family: 'Noto Serif TC', serif;
-      font-size: 12px;
-      letter-spacing: 0.25em;
-      color: #9a845a;
-      font-weight: 300;
-    }
+
     .ku-dept-row {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      justify-content: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
     }
-    .ku-dept-dot {
-      color: rgba(90,70,40,0.3);
-      font-size: 16px;
-    }
-    .ku-dept-item {
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-    }
+
+    .ku-dept-dot { color: rgba(90,70,40,0.3); font-size: 14px; }
+
+    .ku-dept-item { display: inline-flex; align-items: baseline; gap: 5px; }
+
     .ku-dept-subject {
       font-family: 'Noto Serif TC', serif;
       font-size: 11px;
-      letter-spacing: 0.15em;
       color: #7a6545;
       background: rgba(120,90,50,0.08);
       border: 1px solid rgba(120,90,50,0.2);
-      padding: 2px 8px;
+      padding: 2px 7px;
       border-radius: 2px;
+      letter-spacing: 0.1em;
     }
+
     .ku-dept-name {
       font-family: 'Noto Serif TC', serif;
-      font-size: 15px;
-      color: #3d2e1a;
-      letter-spacing: 0.12em;
-      font-weight: 400;
-    }
-    .ku-dept-course {
-      font-family: 'Noto Serif TC', serif;
-      font-size: 11px;
-      letter-spacing: 0.3em;
-      color: rgba(90,70,40,0.4);
-      font-weight: 300;
-    }
-
-    .ku-notice {
-      text-align: center;
-      font-family: 'Noto Serif TC', serif;
       font-size: 14px;
-      color: #5c4a2a;
+      color: #3d2e1a;
       letter-spacing: 0.1em;
-      line-height: 2.2;
-      margin: 2.5rem 0 0;
-      padding: 1.4rem 1.6rem;
-      border-top: 1px solid rgba(120,90,50,0.15);
-      border-bottom: 1px solid rgba(120,90,50,0.15);
-    }
-    .ku-notice-icon {
-      display: block;
-      font-size: 12px;
-      color: #9a845a;
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.3em;
     }
 
-        /* Desktop enhancement */
     @media (min-width: 600px) {
       .ku-hero { padding: 5rem 3rem 3rem; max-width: 680px; margin: 0 auto; }
       .ku-title { font-size: 88px; }
-      .ku-tagline { font-size: 15px; }
       .ku-info-row { flex-direction: row; justify-content: center; gap: 2.5rem; }
       .ku-form-wrap { max-width: 540px; margin: 0 auto; padding: 3rem 0 5rem; }
       .ku-submit { width: auto; padding: 16px 64px; display: block; margin: 0 auto; }
@@ -465,6 +422,7 @@
 
   <main class="ku-form-wrap">
     <p class="ku-form-title">教師參訪報名</p>
+    <p class="ku-notice">報名後將由高中部同學進行專業導覽，時間約 10–15 分鐘</p>
 
     <div class="ku-form-content" id="formContent">
 
@@ -514,8 +472,8 @@
         </div>
       </div>
 
-      <div class="ku-notice">
-        <span class="ku-notice-icon">✦</span>
+      <div class="ku-notice-box">
+        <span>✦</span>
         報名後將由高中部同學進行專業導覽<br>時間約 10–15 分鐘
       </div>
 
@@ -525,7 +483,7 @@
 
       <div class="ku-footer-note">
         <p style="margin-bottom:0.6rem;">本活動僅開放國中部教師報名參訪</p>
-        <p style="font-size:11px;color:#9a845a;letter-spacing:0.15em;margin-bottom:0.5rem;">高中部　指導教師</p>
+        <p style="font-size:11px;color:#b09a7a;letter-spacing:0.2em;margin-bottom:0.5rem;">高中部　指導教師</p>
         <div style="display:flex;justify-content:center;align-items:baseline;gap:0.8rem;flex-wrap:wrap;">
           <span style="display:inline-flex;align-items:baseline;gap:5px;">
             <span style="font-size:11px;color:#7a6545;background:rgba(120,90,50,0.08);border:1px solid rgba(120,90,50,0.2);padding:2px 7px;border-radius:2px;letter-spacing:0.1em;">國文</span>
@@ -552,6 +510,11 @@
 </div>
 
 <script>
+  const FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSfo8B4QDPAutRgBQ9MebQLPpMsKgWlwxrDY5lMpgs6aAH7AAA/formResponse';
+  const ENTRY_DOMAIN = 'entry.1045225323';
+  const ENTRY_NAME   = 'entry.1729518396';
+  const ENTRY_TIME   = 'entry.1325605851';
+
   const dayLabel = {
     '5/25 1330-1400': '5月25日（日）',
     '5/26 1330-1400': '5月26日（一）',
@@ -559,28 +522,72 @@
     '5/28 1330-1400': '5月28日（三）',
     '5/29 1330-1400': '5月29日（四）'
   };
+
   function showAlert(msg) {
     const box = document.getElementById('alertBox');
     box.textContent = msg;
     box.classList.add('visible');
     box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
-  function hideAlert() { document.getElementById('alertBox').classList.remove('visible'); }
+
+  function hideAlert() {
+    document.getElementById('alertBox').classList.remove('visible');
+  }
+
   function handleSubmit() {
     hideAlert();
-    const name = document.getElementById('f-name').value.trim();
+    const name   = document.getElementById('f-name').value.trim();
     const domain = document.querySelector('input[name="domain"]:checked');
-    const time = document.querySelector('input[name="time"]:checked');
-    if (!name) { showAlert('請填寫教師姓名'); return; }
+    const time   = document.querySelector('input[name="time"]:checked');
+
+    if (!name)   { showAlert('請填寫教師姓名'); return; }
     if (!domain) { showAlert('請選擇任教領域'); return; }
-    if (!time) { showAlert('請選擇參訪時間'); return; }
+    if (!time)   { showAlert('請選擇參訪時間'); return; }
+
+    // Submit to Google Form via hidden iframe (no-CORS workaround)
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = FORM_ACTION;
+    form.target = 'hidden_iframe';
+
+    const fbzx = Math.floor(Math.random() * 9e18).toString();
+    const fields = {
+      [ENTRY_NAME]:              name,
+      [ENTRY_DOMAIN]:            domain.value,
+      [ENTRY_TIME]:              time.value,
+      [ENTRY_DOMAIN + '_sentinel']: '__Submitted__',
+      [ENTRY_TIME   + '_sentinel']: '__Submitted__',
+      'fvv':                     '1',
+      'pageHistory':             '0',
+      'fbzx':                    fbzx,
+    };
+
+    for (const [key, val] of Object.entries(fields)) {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = val;
+      form.appendChild(input);
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
+
+    // Show success UI
     document.getElementById('formContent').classList.add('hidden');
     const success = document.getElementById('successMsg');
     success.classList.add('visible');
     document.getElementById('successDetail').innerHTML =
-      name + ' 老師<br>' + domain.value + '・' + dayLabel[time.value] + ' 13:30–14:00<br><br>期待您蒞臨高中部二樓，<br>一同感受同學們最動人的思辨結晶。';
+      name + ' 老師<br>' +
+      domain.value + '・' + dayLabel[time.value] + ' 13:30–14:00<br><br>' +
+      '期待您蒞臨高中部二樓，<br>一同感受同學們最動人的思辨結晶。';
     success.scrollIntoView({ behavior: 'smooth' });
   }
 </script>
+
+<!-- Hidden iframe to absorb Google Form redirect -->
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+
 </body>
 </html>
