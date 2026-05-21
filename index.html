@@ -172,30 +172,12 @@
   </main>
 </div>
 
-<!-- 隱藏表單，直接 POST 到 Google Form，LINE 瀏覽器也支援 -->
-<form id="gform"
-      method="POST"
-      action="https://docs.google.com/forms/d/e/1FAIpQLSfo8B4QDPAutRgBQ9MebQLPpMsKgWlwxrDY5lMpgs6aAH7AAA/formResponse"
-      target="hidden_iframe"
-      style="display:none;">
-  <input type="hidden" name="entry.1729518396" id="g-name">
-  <input type="hidden" name="entry.1045225323" id="g-domain">
-  <input type="hidden" name="entry.1325605851" id="g-time">
-  <input type="hidden" name="entry.1045225323_sentinel" value="">
-  <input type="hidden" name="entry.1325605851_sentinel" value="">
-  <input type="hidden" name="dlut" id="g-dlut">
-  <input type="hidden" name="fvv" value="1">
-  <input type="hidden" name="pageHistory" value="0">
-  <input type="hidden" name="fbzx" id="g-fbzx">
-</form>
-<iframe name="hidden_iframe" style="display:none;"></iframe>
-
 <script>
   const dayLabel = {
     '5/25 1330-1400': '5月25日（一）',
     '5/26 1330-1400': '5月26日（二）',
     '5/27 1330-1400': '5月27日（三）',
-    '5/28 1330-1400': '5月28日（四')',
+    '5/28 1330-1400': '5月28日（四）',
     '5/29 1330-1400': '5月29日（五）'
   };
 
@@ -220,30 +202,25 @@
     if (!domain) { showAlert('請選擇任教領域'); return; }
     if (!time)   { showAlert('請選擇參訪時間'); return; }
 
-    // 【同步串接 1】將填寫資料塞入原生的 Google Form 表單並傳送
-    document.getElementById('g-name').value = name;
-    document.getElementById('g-domain').value = domain.value;
-    document.getElementById('g-time').value = time.value;
-    document.getElementById('gform').submit();
-
-    // 【同步串接 2】以相容 no-cors 模式的 URLSearchParams 格式發送給 Apps Script
+    // 打包資料為 URL 編碼格式
     const params = new URLSearchParams();
     params.append('name', name);
     params.append('domain', domain.value);
     params.append('time', time.value);
 
-    fetch('https://script.google.com/macros/s/AKfycbyTnuMuYVmNzfWeH-ZFkjQ4ttAYTIw--TtqdCiFaJ8lYZ9WHQN17B_C8kJ3taLPaXj8/exec', {
+    // 發送給最新部署的 Apps Script 後台網址
+    fetch('https://script.google.com/macros/s/AKfycbwaECKPYtS7YmBXCN-uj0EYryqhRBESag3LobvuEIeTh7l1H5GEFxN1OxH3xGcjsZNN/exec', {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: params.toString()
     }).then(function() {
-      console.log('Apps Script 傳送完成');
+      console.log('報名資料已發送至最新 Apps Script 後台');
     }).catch(function(err) {
-      console.error('Apps Script 發生錯誤:', err);
+      console.error('發送錯誤:', err);
     });
 
-    // 顯示完成畫面
+    // 流暢切換至報名成功畫面
     document.getElementById('formContent').classList.add('hidden');
     const success = document.getElementById('successMsg');
     success.classList.add('visible');
