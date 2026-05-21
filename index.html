@@ -130,15 +130,10 @@
         <div class="ku-time-group" role="group">
           <div class="ku-time-item"><input type="radio" name="time" id="t0" value="5/25 1330-1400"><label class="ku-time-label" for="t0"><span class="ku-time-dot"></span>5月25日（一）13:30–14:00</label></div>
           <div class="ku-time-item"><input type="radio" name="time" id="t1" value="5/26 1330-1400"><label class="ku-time-label" for="t1"><span class="ku-time-dot"></span>5月26日（二）13:30–14:00</label></div>
-          <div class="ku-time-item"><input type="radio" name="time" id="t2" value="5/27 1330-1400"><label class="ku-time-label" for="t2"><span class="ku-time-dot"></span>5月27日（三）13:30–14:00</label></div>
+          <div class="ku-time-item"><input type="radio" name="time" id="t2" value="5/27 1330-1400"><label class="ku-time-label" for="t2"><span class="ku-time-dot"></span>5月27日（三">）13:30–14:00</label></div>
           <div class="ku-time-item"><input type="radio" name="time" id="t3" value="5/28 1330-1400"><label class="ku-time-label" for="t3"><span class="ku-time-dot"></span>5月28日（四）13:30–14:00</label></div>
           <div class="ku-time-item"><input type="radio" name="time" id="t4" value="5/29 1330-1400"><label class="ku-time-label" for="t4"><span class="ku-time-dot"></span>5月29日（五）13:30–14:00</label></div>
         </div>
-      </div>
-
-      <div class="ku-notice-box">
-        <span>✦</span>
-        報名後將由高中部同學進行專業導覽<br>時間約 10–15 分鐘
       </div>
 
       <div class="ku-submit-area">
@@ -202,13 +197,11 @@
     if (!domain) { showAlert('請選擇任教領域'); return; }
     if (!time)   { showAlert('請選擇參訪時間'); return; }
 
-    // 打包資料為 URL 編碼格式
     const params = new URLSearchParams();
     params.append('name', name);
     params.append('domain', domain.value);
     params.append('time', time.value);
 
-    // 發送給最新部署的 Apps Script 後台網址
     fetch('https://script.google.com/macros/s/AKfycbwaECKPYtS7YmBXCN-uj0EYryqhRBESag3LobvuEIeTh7l1H5GEFxN1OxH3xGcjsZNN/exec', {
       method: 'POST',
       mode: 'no-cors',
@@ -220,7 +213,6 @@
       console.error('發送錯誤:', err);
     });
 
-    // 流暢切換至報名成功畫面
     document.getElementById('formContent').classList.add('hidden');
     const success = document.getElementById('successMsg');
     success.classList.add('visible');
