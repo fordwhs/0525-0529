@@ -11,6 +11,8 @@
     body { font-family: 'Noto Sans TC', sans-serif; background: #f5f0e8; min-height: 100vh; color: #2a2218; -webkit-text-size-adjust: 100%; }
     .ku-root { position: relative; overflow-x: hidden; min-height: 100vh; }
     .ku-bg { position: fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+
+    /* HERO */
     .ku-hero { position:relative; z-index:1; text-align:center; padding:3.5rem 1.6rem 2.5rem; border-bottom:1px solid rgba(80,60,30,0.15); }
     .ku-eyebrow { font-family:'Noto Serif TC',serif; font-size:13px; letter-spacing:0.2em; color:#7a6545; font-weight:300; margin-bottom:1.4rem; line-height:1.8; }
     .ku-title { font-family:'Noto Serif TC',serif; font-size:72px; font-weight:600; color:#1e160a; letter-spacing:0.25em; line-height:1.05; margin-bottom:0.5rem; }
@@ -20,6 +22,8 @@
     .ku-info-row { display:flex; flex-direction:column; align-items:center; gap:0.8rem; }
     .ku-info-item { font-size:14px; color:#6b5538; letter-spacing:0.1em; display:flex; align-items:center; gap:8px; }
     .ku-info-item svg { width:16px; height:16px; stroke:#8b6e45; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
+
+    /* FORM */
     .ku-form-wrap { position:relative; z-index:1; padding:2.5rem 1.6rem 5rem; }
     .ku-form-title { font-family:'Noto Serif TC',serif; font-size:16px; font-weight:400; color:#3d2e1a; letter-spacing:0.3em; text-align:center; margin-bottom:0.8rem; }
     .ku-notice { font-family:'Noto Serif TC',serif; font-size:13px; color:#6b5538; letter-spacing:0.1em; line-height:2; text-align:center; margin-bottom:2.5rem; }
@@ -29,11 +33,15 @@
     .ku-input { width:100%; background:rgba(255,250,242,0.95); border:1px solid rgba(120,90,50,0.28); border-radius:3px; padding:15px 16px; font-family:'Noto Sans TC',sans-serif; font-size:16px; color:#2a2218; outline:none; transition:border-color 0.2s; -webkit-appearance:none; }
     .ku-input:focus { border-color:rgba(120,90,50,0.65); background:#fffcf5; }
     .ku-input::placeholder { color:#b09a7a; }
+
+    /* RADIO */
     .ku-radio-group { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
     .ku-radio-item { position:relative; }
     .ku-radio-item input[type="radio"] { position:absolute; opacity:0; width:0; height:0; }
     .ku-radio-label { display:block; padding:13px 10px; background:rgba(255,250,242,0.95); border:1px solid rgba(120,90,50,0.22); border-radius:3px; font-size:15px; color:#4a3820; cursor:pointer; transition:all 0.18s; text-align:center; letter-spacing:0.06em; user-select:none; -webkit-tap-highlight-color:transparent; }
     .ku-radio-item input:checked + .ku-radio-label { background:rgba(120,90,50,0.14); border-color:rgba(120,90,50,0.58); color:#2a1c0a; }
+
+    /* TIME */
     .ku-time-group { display:flex; flex-direction:column; gap:10px; }
     .ku-time-item { position:relative; }
     .ku-time-item input[type="radio"] { position:absolute; opacity:0; width:0; height:0; }
@@ -41,21 +49,35 @@
     .ku-time-dot { width:10px; height:10px; border-radius:50%; border:1.5px solid rgba(120,90,50,0.4); flex-shrink:0; transition:all 0.18s; }
     .ku-time-item input:checked + .ku-time-label { background:rgba(120,90,50,0.12); border-color:rgba(120,90,50,0.55); color:#2a1c0a; }
     .ku-time-item input:checked + .ku-time-label .ku-time-dot { background:#7a6545; border-color:#7a6545; }
+
+    /* NOTICE BOX */
     .ku-notice-box { text-align:center; font-family:'Noto Serif TC',serif; font-size:14px; color:#5c4a2a; letter-spacing:0.1em; line-height:2.2; margin:2.5rem 0 0; padding:1.4rem 1.6rem; border-top:1px solid rgba(120,90,50,0.15); border-bottom:1px solid rgba(120,90,50,0.15); }
-    .ku-notice-box span { display:block; font-size:12px; color:#9a845a; margin-bottom:0.5rem; letter-spacing:0.3em; }
+    .ku-notice-box .icon { display:block; font-size:12px; color:#9a845a; margin-bottom:0.5rem; letter-spacing:0.3em; }
+
+    /* SUBMIT */
     .ku-submit-area { margin-top:2.8rem; }
     .ku-submit { width:100%; font-family:'Noto Serif TC',serif; font-size:16px; letter-spacing:0.4em; color:#f5f0e8; background:#3d2e1a; border:none; padding:18px 0; cursor:pointer; border-radius:3px; transition:background 0.2s; -webkit-tap-highlight-color:transparent; }
     .ku-submit:active { background:#2a1c0a; }
+
+    /* FOOTER */
     .ku-footer-note { text-align:center; font-size:12px; color:#9a845a; letter-spacing:0.1em; margin-top:2rem; line-height:2.2; }
+    .ku-dept-row { display:flex; justify-content:center; align-items:baseline; gap:0.8rem; flex-wrap:wrap; margin-top:0.6rem; }
+    .ku-dept-tag { font-size:11px; color:#7a6545; background:rgba(120,90,50,0.08); border:1px solid rgba(120,90,50,0.2); padding:2px 7px; border-radius:2px; letter-spacing:0.1em; }
+    .ku-dept-name { font-size:14px; color:#3d2e1a; letter-spacing:0.1em; font-family:'Noto Serif TC',serif; }
     .ku-tree-deco { text-align:center; font-size:12px; color:rgba(90,70,40,0.3); letter-spacing:0.4em; margin-top:1.4rem; }
+
+    /* ALERT */
     .ku-alert { display:none; background:rgba(160,82,45,0.1); border:1px solid rgba(160,82,45,0.3); border-radius:3px; padding:13px 16px; font-size:14px; color:#7a3e18; margin-bottom:1.8rem; letter-spacing:0.05em; }
     .ku-alert.visible { display:block; }
+
+    /* SUCCESS */
     .ku-success { display:none; text-align:center; padding:3rem 1.6rem 2rem; font-family:'Noto Serif TC',serif; }
     .ku-success.visible { display:block; }
     .ku-form-content.hidden { display:none; }
     .ku-success-icon { font-size:44px; margin-bottom:1.4rem; color:#7a6545; }
     .ku-success-title { font-size:24px; color:#2a1c0a; letter-spacing:0.25em; font-weight:400; margin-bottom:1.2rem; }
     .ku-success-text { font-size:16px; color:#5c4a2a; letter-spacing:0.08em; line-height:2.4; }
+
     @media (min-width:600px) {
       .ku-hero { padding:5rem 3rem 3rem; max-width:680px; margin:0 auto; }
       .ku-title { font-size:88px; }
@@ -68,6 +90,7 @@
 </head>
 <body>
 <div class="ku-root">
+
   <svg class="ku-bg" viewBox="0 0 400 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
     <circle cx="200" cy="160" r="240" fill="rgba(180,160,120,0.05)"/>
     <text x="140" y="820" font-size="220" fill="rgba(100,75,40,0.045)" font-family="serif" font-weight="bold">楝</text>
@@ -128,12 +151,17 @@
       <div class="ku-field">
         <span class="ku-label">參訪時間<span class="req">*</span></span>
         <div class="ku-time-group" role="group">
-          <div class="ku-time-item"><input type="radio" name="time" id="t0" value="5/25 1330-1400"><label class="ku-time-label" for="t0"><span class="ku-time-dot"></span>5月25日（一）13:30–14:00</label></div>
-          <div class="ku-time-item"><input type="radio" name="time" id="t1" value="5/26 1330-1400"><label class="ku-time-label" for="t1"><span class="ku-time-dot"></span>5月26日（二）13:30–14:00</label></div>
-          <div class="ku-time-item"><input type="radio" name="time" id="t2" value="5/27 1330-1400"><label class="ku-time-label" for="t2"><span class="ku-time-dot"></span>5月27日（三">）13:30–14:00</label></div>
-          <div class="ku-time-item"><input type="radio" name="time" id="t3" value="5/28 1330-1400"><label class="ku-time-label" for="t3"><span class="ku-time-dot"></span>5月28日（四）13:30–14:00</label></div>
-          <div class="ku-time-item"><input type="radio" name="time" id="t4" value="5/29 1330-1400"><label class="ku-time-label" for="t4"><span class="ku-time-dot"></span>5月29日（五）13:30–14:00</label></div>
+          <div class="ku-time-item"><input type="radio" name="time" id="t0" value="5/25 1330-1400"><label class="ku-time-label" for="t0"><span class="ku-time-dot"></span>5月25日（日）13:30–14:00</label></div>
+          <div class="ku-time-item"><input type="radio" name="time" id="t1" value="5/26 1330-1400"><label class="ku-time-label" for="t1"><span class="ku-time-dot"></span>5月26日（一）13:30–14:00</label></div>
+          <div class="ku-time-item"><input type="radio" name="time" id="t2" value="5/27 1330-1400"><label class="ku-time-label" for="t2"><span class="ku-time-dot"></span>5月27日（二）13:30–14:00</label></div>
+          <div class="ku-time-item"><input type="radio" name="time" id="t3" value="5/28 1330-1400"><label class="ku-time-label" for="t3"><span class="ku-time-dot"></span>5月28日（三）13:30–14:00</label></div>
+          <div class="ku-time-item"><input type="radio" name="time" id="t4" value="5/29 1330-1400"><label class="ku-time-label" for="t4"><span class="ku-time-dot"></span>5月29日（四）13:30–14:00</label></div>
         </div>
+      </div>
+
+      <div class="ku-notice-box">
+        <span class="icon">✦</span>
+        報名後將由高中部同學進行專業導覽<br>時間約 10–15 分鐘
       </div>
 
       <div class="ku-submit-area">
@@ -141,17 +169,17 @@
       </div>
 
       <div class="ku-footer-note">
-        <p style="margin-bottom:0.6rem;">本活動僅開放國中部教師報名參訪</p>
-        <p style="font-size:11px;color:#b09a7a;letter-spacing:0.2em;margin-bottom:0.5rem;">高中部　指導教師</p>
-        <div style="display:flex;justify-content:center;align-items:baseline;gap:0.8rem;flex-wrap:wrap;">
+        <p>本活動僅開放國中部教師報名參訪</p>
+        <p style="font-size:11px;color:#b09a7a;letter-spacing:0.2em;margin-top:0.8rem;">高中部　指導教師</p>
+        <div class="ku-dept-row">
           <span style="display:inline-flex;align-items:baseline;gap:5px;">
-            <span style="font-size:11px;color:#7a6545;background:rgba(120,90,50,0.08);border:1px solid rgba(120,90,50,0.2);padding:2px 7px;border-radius:2px;letter-spacing:0.1em;">國文</span>
-            <span style="font-size:14px;color:#3d2e1a;letter-spacing:0.1em;">彭瑞萱 老師</span>
+            <span class="ku-dept-tag">國文</span>
+            <span class="ku-dept-name">彭瑞萱 老師</span>
           </span>
           <span style="color:rgba(90,70,40,0.3);">·</span>
           <span style="display:inline-flex;align-items:baseline;gap:5px;">
-            <span style="font-size:11px;color:#7a6545;background:rgba(120,90,50,0.08);border:1px solid rgba(120,90,50,0.2);padding:2px 7px;border-radius:2px;letter-spacing:0.1em;">公民</span>
-            <span style="font-size:14px;color:#3d2e1a;letter-spacing:0.1em;">李惠茹 老師</span>
+            <span class="ku-dept-tag">公民</span>
+            <span class="ku-dept-name">李惠茹 老師</span>
           </span>
         </div>
       </div>
@@ -168,12 +196,14 @@
 </div>
 
 <script>
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwaECKPYtS7YmBXCN-uj0EYryqhRBESag3LobvuEIeTh7l1H5GEFxN1OxH3xGcjsZNN/exec';
+
   const dayLabel = {
-    '5/25 1330-1400': '5月25日（一）',
-    '5/26 1330-1400': '5月26日（二）',
-    '5/27 1330-1400': '5月27日（三）',
-    '5/28 1330-1400': '5月28日（四）',
-    '5/29 1330-1400': '5月29日（五）'
+    '5/25 1330-1400': '5月25日（日）',
+    '5/26 1330-1400': '5月26日（一）',
+    '5/27 1330-1400': '5月27日（二）',
+    '5/28 1330-1400': '5月28日（三）',
+    '5/29 1330-1400': '5月29日（四）'
   };
 
   function showAlert(msg) {
@@ -202,13 +232,11 @@
     params.append('domain', domain.value);
     params.append('time', time.value);
 
-    fetch('https://script.google.com/macros/s/AKfycbwaECKPYtS7YmBXCN-uj0EYryqhRBESag3LobvuEIeTh7l1H5GEFxN1OxH3xGcjsZNN/exec', {
+    fetch(SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: params.toString()
-    }).then(function() {
-      console.log('報名資料已發送至最新 Apps Script 後台');
     }).catch(function(err) {
       console.error('發送錯誤:', err);
     });
