@@ -386,6 +386,21 @@
   </style>
 </head>
 <body>
+<div id="line-banner" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(245,240,232,0.97);z-index:9999;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;font-family:'Noto Serif TC',serif;">
+  <div style="font-size:48px;margin-bottom:1.5rem;">📖</div>
+  <div style="font-size:22px;font-weight:600;color:#1e160a;letter-spacing:0.2em;margin-bottom:1rem;">苦楝</div>
+  <div style="width:40px;height:1px;background:linear-gradient(to right,transparent,#7a6545,transparent);margin:0 auto 1.5rem;"></div>
+  <div style="font-size:15px;color:#4a3820;line-height:2.4;letter-spacing:0.08em;margin-bottom:2rem;">
+    請以瀏覽器開啟<br>才能正常完成報名
+  </div>
+  <div style="background:#3d2e1a;color:#f5f0e8;border-radius:3px;padding:14px 28px;font-size:14px;letter-spacing:0.3em;margin-bottom:1.5rem;">
+    點右上角 <strong>⋯</strong>
+  </div>
+  <div style="font-size:13px;color:#7a6545;letter-spacing:0.15em;line-height:2;">
+    選擇「在瀏覽器開啟」<br>即可填寫報名
+  </div>
+  <div style="font-size:11px;color:rgba(90,70,40,0.3);letter-spacing:0.4em;margin-top:2rem;">— 苦 楝 —</div>
+</div>
 <div class="ku-root">
 
   <svg class="ku-bg" viewBox="0 0 400 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
@@ -578,6 +593,14 @@
   }
 </script>
 
+<script>
+  // Detect LINE in-app browser
+  if (/Line/i.test(navigator.userAgent)) {
+    const banner = document.getElementById('line-banner');
+    banner.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+</script>
 <!-- Hidden iframe to absorb Google Form redirect -->
 <iframe name="hidden_iframe" style="display:none;"></iframe>
 
