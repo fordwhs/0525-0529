@@ -221,11 +221,16 @@
     if (!time)   { showAlert('請選擇參訪時間'); return; }
 
     // 送到 Apps Script
-    fetch('https://script.google.com/macros/s/AKfycbzapSd0jw5OjTtrg4FtiyUzE4j7IPu1891dWi1WjrZKycsn4DjOtQGmF7nPUIcXj2Mc/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbyTnuMuYVmNzfWeH-ZFkjQ4ttAYTIw--TtqdCiFaJ8lYZ9WHQN17B_C8kJ3taLPaXj8/exec', {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name: name, domain: domain.value, time: time.value })
+    }).then(function() {
+      console.log('fetch 送出成功');
+    }).catch(function(err) {
+      console.error('fetch 錯誤:', err);
+      alert('送出失敗: ' + err);
     });
 
     // 顯示完成畫面
