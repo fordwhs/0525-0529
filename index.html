@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Noto Sans TC', sans-serif; background: #f5f0e8; min-height: 100vh; color: #2a2218; -webkit-text-size-adjust: 100%; }
+    body { font-family: 'Noto Sans TC', sans-serif; background: #faf7f2; min-height: 100vh; color: #2a2218; -webkit-text-size-adjust: 100%; }
     .ku-root { position: relative; overflow-x: hidden; min-height: 100vh; }
     .ku-bg { position: fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
 
@@ -92,9 +92,9 @@
 <div class="ku-root">
 
   <svg class="ku-bg" viewBox="0 0 400 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-    <circle cx="200" cy="160" r="240" fill="rgba(180,160,120,0.05)"/>
-    <text x="140" y="820" font-size="220" fill="rgba(100,75,40,0.045)" font-family="serif" font-weight="bold">楝</text>
-    <text x="10" y="240" font-size="100" fill="rgba(100,75,40,0.03)" font-family="serif">苦</text>
+    <circle cx="200" cy="160" r="240" fill="rgba(180,160,120,0.02)"/>
+    <text x="140" y="820" font-size="220" fill="rgba(100,75,40,0.018)" font-family="serif" font-weight="bold">楝</text>
+    <text x="10" y="240" font-size="100" fill="rgba(100,75,40,0.012)" font-family="serif">苦</text>
   </svg>
 
   <header class="ku-hero">
@@ -114,18 +114,13 @@
       </span>
       <span class="ku-info-item">
         <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        5月25日 — 29日
-      </span>
-      <span class="ku-info-item">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-        13:30 – 14:00
+        撤展倒數，感動呈現
       </span>
     </div>
   </header>
 
   <main class="ku-form-wrap">
     <p class="ku-form-title">教師參訪報名</p>
-    <p class="ku-notice">報名後將由高中部同學進行專業導覽，時間約 10–15 分鐘</p>
 
     <div class="ku-form-content" id="formContent">
       <div class="ku-alert" id="alertBox" role="alert"></div>
@@ -151,17 +146,9 @@
       <div class="ku-field">
         <span class="ku-label">參訪時間<span class="req">*</span></span>
         <div class="ku-time-group" role="group">
-          <div class="ku-time-item"><input type="radio" name="time" id="t0" value="5/25 1330-1400"><label class="ku-time-label" for="t0"><span class="ku-time-dot"></span>5月25日（一）13:30–14:00</label></div>
-          <div class="ku-time-item"><input type="radio" name="time" id="t1" value="5/26 1330-1400"><label class="ku-time-label" for="t1"><span class="ku-time-dot"></span>5月26日（二）13:30–14:00</label></div>
-          <div class="ku-time-item"><input type="radio" name="time" id="t2" value="5/27 1030-1100"><label class="ku-time-label" for="t2"><span class="ku-time-dot"></span>5月27日（三）10:30–11:00</label></div>
-          <div class="ku-time-item"><input type="radio" name="time" id="t3" value="5/28 1330-1400"><label class="ku-time-label" for="t3"><span class="ku-time-dot"></span>5月28日（四）13:30–14:00</label></div>
-          <div class="ku-time-item"><input type="radio" name="time" id="t4" value="5/29 1330-1400"><label class="ku-time-label" for="t4"><span class="ku-time-dot"></span>5月29日（五）13:30–14:00</label></div>
+          <div class="ku-time-item"><input type="radio" name="time" id="t0" value="6/1 1330"><label class="ku-time-label" for="t0"><span class="ku-time-dot"></span>6月1日（一）13:30</label></div>
+          <div class="ku-time-item"><input type="radio" name="time" id="t1" value="6/2 1030"><label class="ku-time-label" for="t1"><span class="ku-time-dot"></span>6月2日（二）10:30</label></div>
         </div>
-      </div>
-
-      <div class="ku-notice-box">
-        <span class="icon">✦</span>
-        報名後將由高中部同學進行專業導覽<br>時間約 10–15 分鐘
       </div>
 
       <div class="ku-submit-area">
@@ -199,11 +186,8 @@
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwaECKPYtS7YmBXCN-uj0EYryqhRBESag3LobvuEIeTh7l1H5GEFxN1OxH3xGcjsZNN/exec';
 
   const dayLabel = {
-    '5/25 1330-1400': '5月25日（一）',
-    '5/26 1330-1400': '5月26日（二）',
-    '5/27 1030-1100': '5月27日（三）',
-    '5/28 1330-1400': '5月28日（四）',
-    '5/29 1330-1400': '5月29日（五）'
+    '6/1 1330': '6月1日（一）13:30',
+    '6/2 1030': '6月2日（二）10:30'
   };
 
   function showAlert(msg) {
@@ -246,7 +230,7 @@
     success.classList.add('visible');
     document.getElementById('successDetail').innerHTML =
       name + ' 老師<br>' +
-      domain.value + '・' + dayLabel[time.value] + ' 13:30–14:00<br><br>' +
+      domain.value + '・' + dayLabel[time.value] + '<br><br>' +
       '期待您蒞臨高中部二樓，<br>一同感受同學們最動人的思辨結晶。';
     success.scrollIntoView({ behavior:'smooth' });
   }
